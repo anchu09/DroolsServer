@@ -39,4 +39,282 @@ then
     System.out.println("Suggest listening to relaxing music to reduce feelings of panic and irrationality.");
 end
 
+rule "Try different genres for different emotional response" dialect  "mvel"
+when
+    $q : Questionary(try_different_genres == true)
+then
+    System.out.println("Experiment with different genres of music to see if there is any difference in your emotional response.");
+end
 
+rule "Effective method to improve well-being" dialect  "mvel"
+when
+    $q : Questionary(enjoyment_change > 3, well_being_change > 3) 
+then
+    System.out.println("Congratulations!!! You have found an effective method to improve your emotional well-being.");
+end
+
+rule "Improve ability to handle stressful situations and increase confidence" dialect  "mvel"
+when
+    $q : Questionary(stress_coping_change > 3, confidence_change > 3) 
+then
+    System.out.println("Keep listening to music to improve your ability to handle stressful situations and increase their confidence.");
+end
+//9
+rule "Listen relaxing music to control anxiety" dialect  "mvel"
+when
+    $q : Questionary(listen_more_songs == true) 
+then
+    System.out.println("Keep listening to relaxing music to help control your anxiety. ");
+end
+//10
+rule "Listen to relaxing music to improve ability to concentrate" dialect  "mvel"
+when
+    $q : Questionary(relaxation > 3, concentration_improvement > 3) 
+then
+    System.out.println("Keep listening to relaxing music to improve your ability to concentrate on tasks.");
+end
+//11
+rule "Listen to relaxing music to reduce muscle tension and physical discomfort" dialect  "mvel"
+when
+    $q : Questionary(relaxation > 3, muscle_tension_change > 3) 
+then
+    System.out.println("Keep listening to relaxing music to reduce muscle tension and physical discomfort. ");
+end
+//12
+rule "Improve general emotional state. " dialect  "mvel"
+when
+    $q : Questionary(emotional_state != Emotion.HAPPY, relaxation > 3) 
+then
+    System.out.println("Listen to relaxing music to improve your general emotional state.");
+end
+//13
+rule "Reduce the feeling of chest pressure and muscle tension. " dialect  "mvel"
+when
+    $q : Questionary(chest_pressure > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Try listening to music to reduce the feeling of chest pressure and muscle tension.");
+end
+//14
+rule "Help improve their breathing" dialect  "mvel"
+when
+    $q : Questionary(breathing_difficulty > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Listen to music to help improve your breathing");
+end
+//15
+rule "Help reduce tremors" dialect  "mvel"
+when
+    $q : Questionary(shaky > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Listen to music to help reduce tremors.");
+end
+//16
+rule "Reduce the constant feeling of nervousness and tension" dialect  "mvel"
+when
+    $q : Questionary(nervousness_tension > 3, relaxation < 3) 
+then
+    System.out.println("Try listening to music to help reduce the constant feeling of nervousness and tension");
+end
+//17
+rule "Improve their ability to concentrate on tasks." dialect  "mvel"
+when
+    $q : Questionary(concentration > 3, concentration_improvement < 3) 
+then
+    System.out.println("Listen to music to help improve your ability to concentrate on tasks.");
+end
+//18
+rule "Increase motivation to do activities used to enjoy." dialect  "mvel"
+when
+    $q : Questionary(motivation > 3, enjoyment_change < 3) 
+then
+    System.out.println("Listen to music to help increase the motivation to do activities.");
+//19
+rule "Reduce feelings of panic or irrational fear." dialect  "mvel"
+when
+    $q : Questionary(panic_fear > 3, panic_reduction < 3) 
+then
+    System.out.println("Listen to music to help reduce feelings of panic or irrational fear.");
+end
+//20
+rule "Ability to cope with stressful situations." dialect  "mvel"
+when
+    $q : Questionary(stressful_events > 3, stress_coping_change < 3) 
+then
+    System.out.println("Listen to music to help improve the ability to cope with stressful situations.");
+end
+//21
+rule "Praise for taking steps to control her anxiety." dialect  "mvel"
+when
+    $q : Questionary(anxiety_level > 3, relaxation > 3) 
+then
+    System.out.println("Well done on your way of controlling your anxiety");
+end
+//22
+rule "Improvement in their emotional experience after listening to music" dialect  "mvel"
+when
+    $q : Questionary(anxiety_experience == AnxLevel.MODERATE_ANXIETY || anxiety_experience == AnxLevel.SEVERE_ANXIETY==d, emotional_state == Emotions.HAPPY) 
+then
+    System.out.println("Congratulations!!! you have improve your anxiety");
+end
+//23
+rule "Reduce the sensation of shortness of breath and feelings of fear" dialect  "mvel"
+when
+    $q : Questionary(breathing_difficulty > 3, panic_reduction < 3) 
+then
+    System.out.println("Try listening to relaxing music when you feel a panic attack to reduce the sensation of shortness of breath and feelings of fear");
+end
+//24
+rule "Reduce muscle tension and physical discomfort" dialect  "mvel"
+when
+    $q : Questionary(appetite_weight > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Try listening to relaxing music to reduce muscle tension and physical discomfort");
+end
+//25
+rule "Stay relaxed and calm " dialect  "mvel"
+when
+    $q : Questionary(nervousness_tension > 3, relaxation > 3) 
+then
+    System.out.println("Congratulations!!! Keep listening to music ");
+end
+//26
+rule "Restore motivation in the activities that used to enjoy." dialect  "mvel"
+when
+    $q : Questionary(motivation > 3, enjoyment_change > 3) 
+then
+    System.out.println("Listen to some music when you are feeling unmotivated. ");
+end
+//27
+rule "Manage stressful and worrying situations in the future" dialect  "mvel"
+when
+    $q : Questionary(stressful_events > 3, stress_coping_change > 3) 
+then
+    System.out.println("Listen to relaxing music to help manage stressful and worrying situations in the future. ");
+end
+//28
+rule "Overcome traumatic experiences and reduce the associated anxiety" dialect  "mvel"
+when
+    $q : Questionary(trauma == true, stress_coping_change > 3) 
+then
+    System.out.println("Try listening to overcome the anxiety caused by traumatic experienxies");
+end
+//29
+rule "Seek immediate medical attention," dialect  "mvel"
+when
+    $q : Questionary(chest_pressure > 3) 
+then
+    System.out.println("Seek immediate medical attention. ");
+end
+//30
+rule "Seeking medical treatment for their tremors" dialect  "mvel"
+when
+    $q : Questionary(shaky > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Seek medical treatment");
+end
+//32
+rule "Stressful events therapy" dialect  "mvel"
+when
+    $q : Questionary(stressful_events > 3) 
+then
+    System.out.println("We recomend you to go to a therapist to talk about the stresfull situations");
+end
+//31
+rule "Improve ability to concentrate" dialect  "mvel"
+when
+    $q : Questionary(concentration < 3, concentration_improvement > 3) 
+then
+    System.out.println("Listen to music to improve ability to concentrate");
+end
+//33
+rule "" dialect  "mvel"
+when
+    $q : Questionary(anxiety_level > 3, relaxation > 3) 
+then
+    System.out.println("");
+end
+//34
+rule "Different relaxation techniques" dialect  "mvel"
+when
+    $q : Questionary( duration < 5 ) 
+then
+    System.out.println("Try other techniques such as breathing excercises, yoga or meditation.");
+end
+//35
+rule "Assist cognitive-behavioral therapy " dialect  "mvel"
+when
+    $q : Questionary(panic_fear > 3, panic_reduction < 3, mood > 3) 
+then
+    System.out.println("We recommend you to assist cognitive-behavioral therapy ");
+end
+//36
+rule "Mindfulness techniques" dialect  "mvel"
+when
+    $q : Questionary(recurring_thoughts > 3) 
+then
+    System.out.println("Try practicing mindfulness techniques for focusing on the present moment");
+end
+//37
+rule "Improvement on quality of life" dialect  "mvel"
+when
+    $q : Questionary(treatment == true, control == true) 
+then
+    System.out.println("Congratulations on your improvement!!!");
+end
+//38
+rule "Listen to same music genre" dialect  "mvel"
+when
+    $q : Questionary(energy_level == Energy.SLIGHTLY_ENERGIZED, energy_level == Energy.MORE_ENERGIZED) 
+then
+    System.out.println("Keep listening to the same music genre regularly");
+end
+//39
+rule "New types of music" dialect  "mvel"
+when
+    $q : Questionary(treatment == false) 
+then
+    System.out.println("Try new types of music");
+end
+//40
+rule "Listen music at bedtime" dialect  "mvel"
+when
+    $q : Questionary(sleep_pattern > 3) 
+then
+    System.out.println("Try listening to some relaxing music at bedtime");
+end
+//41
+rule "Another type of music" dialect  "mvel"
+when
+    $q : Questionary(song_satisfaction < 3) 
+then
+    System.out.println("Try listening to another type of music");
+end
+
+//42
+rule "Build confidence and improve social interactions." dialect  "mvel"
+when
+    $q : Questionary(social_interaction <  3, confidence_change > 3) 
+then
+    System.out.println("Listening, playing music or singing can be a great way to build confidence and improve social interactions. ");
+end
+//43
+rule "Nutritionist" dialect  "mvel"
+when
+    $q : Questionary(appetite_weight > 3) 
+then
+    System.out.println("We recommend you to go to a nutritionist ");
+end
+//44
+rule "Assist therapy and take medication" dialect  "mvel"
+when
+    $q : Questionary(social_interaction > 3, relationships > 3) 
+then
+    System.out.println("We recommend you to go to therapy and take medication, which can help individuals manage their symptoms and improve their social relationships ");
+end
+//45
+rule "Control their emotions" dialect  "mvel"
+when
+    $q : Questionary(duration > 3) 
+then
+    System.out.println("Try listening to some relaxing music when they feel anxious to help control your emotions.");
+end
