@@ -480,6 +480,9 @@ public class ServerThreadsClient implements Runnable {
 					int duration =Integer.parseInt( bufferedReader.readLine());
 					AnxietyLevel anxiety_experience =AnxietyLevel.valueOf( bufferedReader.readLine());
 					
+					
+					
+					
 					Emotion emotion_2 = Emotion.valueOf(bufferedReader.readLine());
 					int sleep_improvement =Integer.parseInt( bufferedReader.readLine());
 					int muscle_tension_change = Integer.parseInt(bufferedReader.readLine());
@@ -502,6 +505,8 @@ public class ServerThreadsClient implements Runnable {
 					boolean recommendations =Boolean.parseBoolean( bufferedReader.readLine());
 
 Questionary q = new Questionary(emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, recommendations, anxiety_perception_change, anxiety_experience, emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, song_experience, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, energy_level, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, emotional_state, anxiety_perception_change, anxiety_perception_change, recommendations);
+System.out.println(q.toString());
+
 try {
     // load up the knowledge base
     KieServices ks = KieServices.Factory.get();
