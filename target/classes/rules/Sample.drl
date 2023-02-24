@@ -12,119 +12,120 @@ rule "Reduce muscle tension with relaxing music" dialect  "java"
 when
     q : Questionary(emotion_2 == Emotion.HAPPY || emotion_2 == Emotion.SAD, muscle_tension_change > 3)
 then
-    System.out.println("Suggest listening to relaxing music to reduce muscle tension and physical discomfort.");
+    q.setResultado(q.getResultado()+"Suggest listening to relaxing music to reduce muscle tension and physical discomfort.\n");
+  
 end
 
 rule "Congratulate on effective anxiety control" dialect  "java"
 when
     q : Questionary(anxiety_level_2 < 3, relaxation > 3)
 then
-    System.out.println("Congratulate the patient for finding an effective method to control their anxiety.");
+    q.setResultado(q.getResultado()+"Congratulate the patient for finding an effective method to control their anxiety.\n\n");
 end
 
 rule "Suggest progressive muscle relaxation techniques" dialect  "java"
 when
     q : Questionary(anxiety_level_2 < 3, sleep_improvement > 3)
 then
-    System.out.println("Suggest trying progressive muscle relaxation techniques to reduce physical discomfort.");
+    q.setResultado(q.getResultado()+"Suggest trying progressive muscle relaxation techniques to reduce physical discomfort.\n\n");
 end
 
 rule "Provide song recommendations" dialect  "java"
 when
     q : Questionary(recommendations == true)
 then
-    System.out.println("Provide the patient with specific song recommendations that can help them control their anxiety.");
+    q.setResultado(q.getResultado()+"Provide the patient with specific song recommendations that can help them control their anxiety.\n");
 end
 
 rule "Reduce feelings of panic with relaxing music" dialect  "java"
 when
     q : Questionary(panic_reduction > 3, relaxation < 3)
 then
-    System.out.println("Suggest listening to relaxing music to reduce feelings of panic and irrationality.");
+    q.setResultado(q.getResultado()+"Suggest listening to relaxing music to reduce feelings of panic and irrationality.\n");
 end
 
 rule "Try different genres for different emotional response" dialect  "java"
 when
     q : Questionary(try_different_genres == true)
 then
-    System.out.println("Experiment with different genres of music to see if there is any difference in your emotional response.");
+    q.setResultado(q.getResultado()+"Experiment with different genres of music to see if there is any difference in your emotional response.\n");
 end
 
 rule "Effective method to improve well-being" dialect  "java"
 when
     q : Questionary(enjoyment_change > 3, well_being_change > 3) 
 then
-    System.out.println("Congratulations!!! You have found an effective method to improve your emotional well-being.");
+    q.setResultado(q.getResultado()+"Congratulations!!! You have found an effective method to improve your emotional well-being.\n");
 end
 
 rule "Improve ability to handle stressful situations and increase confidence" dialect  "java"
 when
     q : Questionary(stress_coping_change > 3, confidence_change > 3) 
 then
-    System.out.println("Keep listening to music to improve your ability to handle stressful situations and increase their confidence.");
+    q.setResultado(q.getResultado()+"Keep listening to music to improve your ability to handle stressful situations and increase their confidence.\n");
 end
 //9
 rule "Listen relaxing music to control anxiety" dialect  "java"
 when
     q : Questionary(listen_more_songs == true) 
 then
-    System.out.println("Keep listening to relaxing music to help control your anxiety. ");
+    q.setResultado(q.getResultado()+"Keep listening to relaxing music to help control your anxiety. \n");
 end
 //10
 rule "Listen to relaxing music to improve ability to concentrate" dialect  "java"
 when
     q : Questionary(relaxation > 3, concentration_improvement > 3) 
 then
-    System.out.println("Keep listening to relaxing music to improve your ability to concentrate on tasks.");
+    q.setResultado(q.getResultado()+"Keep listening to relaxing music to improve your ability to concentrate on tasks.\n");
 end
 //11
 rule "Listen to relaxing music to reduce muscle tension and physical discomfort" dialect  "java"
 when
     q : Questionary(relaxation > 3, muscle_tension_change > 3) 
 then
-    System.out.println("Keep listening to relaxing music to reduce muscle tension and physical discomfort. ");
+    q.setResultado(q.getResultado()+"Keep listening to relaxing music to reduce muscle tension and physical discomfort. \n");
 end
 //12
 rule "Improve general emotional state. " dialect  "java"
 when
     q : Questionary(emotional_state != Emotion.HAPPY, relaxation > 3) 
 then
-    System.out.println("Listen to relaxing music to improve your general emotional state.");
+    q.setResultado(q.getResultado()+"Listen to relaxing music to improve your general emotional state.\n");
 end
 //13
 rule "Reduce the feeling of chest pressure and muscle tension. " dialect  "java"
 when
     q : Questionary(chest_pressure > 3, muscle_tension_change < 3) 
 then
-    System.out.println("Try listening to music to reduce the feeling of chest pressure and muscle tension.");
+    q.setResultado(q.getResultado()+"Try listening to music to reduce the feeling of chest pressure and muscle tension.\n");
 end
 //14
 rule "Help improve their breathing" dialect  "java"
 when
     q : Questionary(breathing_difficulty > 3, muscle_tension_change < 3) 
 then
-    System.out.println("Listen to music to help improve your breathing");
+    q.setResultado(q.getResultado()+"Listen to music to help improve your breathing\n");
 end
 //15
 rule "Help reduce tremors" dialect  "java"
 when
     q : Questionary(shaky > 3, muscle_tension_change < 3) 
 then
-    System.out.println("Listen to music to help reduce tremors.");
+    q.setResultado(q.getResultado()+"Listen to music to help reduce tremors.\n");
 end
 //16
 rule "Reduce the constant feeling of nervousness and tension" dialect  "java"
 when
     q : Questionary(nervousness_tension > 3, relaxation < 3) 
 then
-    System.out.println("Try listening to music to help reduce the constant feeling of nervousness and tension");
+    q.setResultado(q.getResultado()+"Try listening to music to help reduce the constant feeling of nervousness and tension\n");
 end
 //17
 rule "Improve their ability to concentrate on tasks." dialect  "java"
 when
     q : Questionary(concentration > 3, concentration_improvement < 3) 
 then
-    System.out.println("Listen to music to help improve your ability to concentrate on tasks.");
+    q.setResultado(q.getResultado()+"Listen to music to help improve your ability to concentrate on tasks.\n");
 end
 
 //19
@@ -132,161 +133,161 @@ rule "Reduce feelings of panic or irrational fear." dialect  "java"
 when
     q : Questionary(panic_fear > 3, panic_reduction < 3) 
 then
-    System.out.println("Listen to music to help reduce feelings of panic or irrational fear.");
+    q.setResultado(q.getResultado()+"Listen to music to help reduce feelings of panic or irrational fear.\n");
 end
 //20
 rule "Ability to cope with stressful situations." dialect  "java"
 when
     q : Questionary(stressful_events > 3, stress_coping_change < 3) 
 then
-    System.out.println("Listen to music to help improve the ability to cope with stressful situations.");
+    q.setResultado(q.getResultado()+"Listen to music to help improve the ability to cope with stressful situations.\n");
 end
 //21
 rule "Praise for taking steps to control her anxiety." dialect  "java"
 when
     q : Questionary(anxiety_level > 3, relaxation > 3) 
 then
-    System.out.println("Well done on your way of controlling your anxiety");
+    q.setResultado(q.getResultado()+"Well done on your way of controlling your anxiety\n");
 end
 //22
 rule "Improvement in their emotional experience after listening to music" dialect  "java"
 when
     q : Questionary(anxiety_experience == AnxietyLevel.MODERATE_ANXIETY || anxiety_experience == AnxietyLevel.SEVERE_ANXIETY, emotional_state == Emotion.HAPPY) 
 then
-    System.out.println("Congratulations!!! you have improve your anxiety");
+    q.setResultado(q.getResultado()+"Congratulations!!! you have improve your anxiety\n");
 end
 //23
 rule "Reduce the sensation of shortness of breath and feelings of fear" dialect  "java"
 when
     q : Questionary(breathing_difficulty > 3, panic_reduction < 3) 
 then
-    System.out.println("Try listening to relaxing music when you feel a panic attack to reduce the sensation of shortness of breath and feelings of fear");
+    q.setResultado(q.getResultado()+"Try listening to relaxing music when you feel a panic attack to reduce the sensation of shortness of breath and feelings of fear\n");
 end
 //24
 rule "Reduce muscle tension and physical discomfort" dialect  "java"
 when
     q : Questionary(appetite_weight > 3, muscle_tension_change < 3) 
 then
-    System.out.println("Try listening to relaxing music to reduce muscle tension and physical discomfort");
+    q.setResultado(q.getResultado()+"Try listening to relaxing music to reduce muscle tension and physical discomfort\n");
 end
 //25
 rule "Stay relaxed and calm " dialect  "java"
 when
     q : Questionary(nervousness_tension > 3, relaxation > 3) 
 then
-    System.out.println("Congratulations!!! Keep listening to music ");
+    q.setResultado(q.getResultado()+"Congratulations!!! Keep listening to music \n");
 end
 //26
 rule "Restore motivation in the activities that used to enjoy." dialect  "java"
 when
     q : Questionary(motivation > 3, enjoyment_change > 3) 
 then
-    System.out.println("Listen to some music when you are feeling unmotivated. ");
+    q.setResultado(q.getResultado()+"Listen to some music when you are feeling unmotivated. \n");
 end
 //27
 rule "Manage stressful and worrying situations in the future" dialect  "java"
 when
     q : Questionary(stressful_events > 3, stress_coping_change > 3) 
 then
-    System.out.println("Listen to relaxing music to help manage stressful and worrying situations in the future. ");
+    q.setResultado(q.getResultado()+"Listen to relaxing music to help manage stressful and worrying situations in the future. \n");
 end
 //28
 rule "Overcome traumatic experiences and reduce the associated anxiety" dialect  "java"
 when
     q : Questionary(trauma == true, stress_coping_change > 3) 
 then
-    System.out.println("Try listening to overcome the anxiety caused by traumatic experienxies");
+    q.setResultado(q.getResultado()+"Try listening to overcome the anxiety caused by traumatic experienxies\n");
 end
 //29
 rule "Seek immediate medical attention," dialect  "java"
 when
     q : Questionary(chest_pressure > 3) 
 then
-    System.out.println("Seek immediate medical attention. ");
+    q.setResultado(q.getResultado()+"Seek immediate medical attention. \n");
 end
 //30
 rule "Seeking medical treatment for their tremors" dialect  "java"
 when
     q : Questionary(shaky > 3, muscle_tension_change < 3) 
 then
-    System.out.println("Seek medical treatment");
+    q.setResultado(q.getResultado()+"Seek medical treatment\n");
 end
 //32
 rule "Stressful events therapy" dialect  "java"
 when
     q : Questionary(stressful_events > 3) 
 then
-    System.out.println("We recomend you to go to a therapist to talk about the stresfull situations");
+    q.setResultado(q.getResultado()+"We recomend you to go to a therapist to talk about the stresfull situations\n");
 end
 //31
 rule "Improve ability to concentrate" dialect  "java"
 when
     q : Questionary(concentration < 3, concentration_improvement > 3) 
 then
-    System.out.println("Listen to music to improve ability to concentrate");
+    q.setResultado(q.getResultado()+"Listen to music to improve ability to concentrate\n");
 end
 //33
 rule "" dialect  "java"
 when
     q : Questionary(anxiety_level > 3, relaxation > 3) 
 then
-    System.out.println("");
+    q.setResultado(q.getResultado()+"\n");
 end
 //34
 rule "Different relaxation techniques" dialect  "java"
 when
     q : Questionary( durat < 5 ) 
 then
-    System.out.println("Try other techniques such as breathing excercises, yoga or meditation.");
+    q.setResultado(q.getResultado()+"Try other techniques such as breathing excercises, yoga or meditation.\n");
 end
 //35
 rule "Assist cognitive-behavioral therapy " dialect  "java"
 when
     q : Questionary(panic_fear > 3, panic_reduction < 3, mood > 3) 
 then
-    System.out.println("We recommend you to assist cognitive-behavioral therapy ");
+    q.setResultado(q.getResultado()+"We recommend you to assist cognitive-behavioral therapy \n");
 end
 //36
 rule "Mindfulness techniques" dialect  "java"
 when
     q : Questionary(recurring_thoughts > 3) 
 then
-    System.out.println("Try practicing mindfulness techniques for focusing on the present moment");
+    q.setResultado(q.getResultado()+"Try practicing mindfulness techniques for focusing on the present moment\n");
 end
 //37
 rule "Improvement on quality of life" dialect  "java"
 when
     q : Questionary(treatment == true, control == true) 
 then
-    System.out.println("Congratulations on your improvement!!!");
+    q.setResultado(q.getResultado()+"Congratulations on your improvement!!!\n");
 end
 //38
 rule "Listen to same music genre" dialect  "java"
 when
     q : Questionary(energy_level == Energy.SLIGHTLY_ENERGIZED, energy_level == Energy.MORE_ENERGIZED) 
 then
-    System.out.println("Keep listening to the same music genre regularly");
+    q.setResultado(q.getResultado()+"Keep listening to the same music genre regularly\n");
 end
 //39
 rule "New types of music" dialect  "java"
 when
     q : Questionary(treatment == false) 
 then
-    System.out.println("Try new types of music");
+    q.setResultado(q.getResultado()+"Try new types of music\n");
 end
 //40
 rule "Listen music at bedtime" dialect  "java"
 when
     q : Questionary(sleep_pattern > 3) 
 then
-    System.out.println("Try listening to some relaxing music at bedtime");
+    q.setResultado(q.getResultado()+"Try listening to some relaxing music at bedtime\n");
 end
 //41
 rule "Another type of music" dialect  "java"
 when
     q : Questionary(song_satisfaction < 3) 
 then
-    System.out.println("Try listening to another type of music");
+    q.setResultado(q.getResultado()+"Try listening to another type of music\n");
 end
 
 //42
@@ -294,26 +295,26 @@ rule "Build confidence and improve social interactions." dialect  "java"
 when
     q : Questionary(social_interaction <  3, confidence_change > 3) 
 then
-    System.out.println("Listening, playing music or singing can be a great way to build confidence and improve social interactions. ");
+    q.setResultado(q.getResultado()+"Listening, playing music or singing can be a great way to build confidence and improve social interactions. \n");
 end
 //43
 rule "Nutritionist" dialect  "java"
 when
     q : Questionary(appetite_weight > 3) 
 then
-    System.out.println("We recommend you to go to a nutritionist ");
+    q.setResultado(q.getResultado()+"We recommend you to go to a nutritionist \n");
 end
 //44
 rule "Assist therapy and take medication" dialect  "java"
 when
     q : Questionary(social_interaction > 3, relationships > 3) 
 then
-    System.out.println("We recommend you to go to therapy and take medication, which can help individuals manage their symptoms and improve their social relationships ");
+    q.setResultado(q.getResultado()+"We recommend you to go to therapy and take medication, which can help individuals manage their symptoms and improve their social relationships \n");
 end
 //45
 rule "Control their emotions" dialect  "java"
 when
     q : Questionary(durat > 3) 
 then
-    System.out.println("Try listening to some relaxing music when they feel anxious to help control your emotions.");
+    q.setResultado(q.getResultado()+"Try listening to some relaxing music when they feel anxious to help control your emotions.\n");
 end

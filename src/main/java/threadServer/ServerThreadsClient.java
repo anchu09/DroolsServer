@@ -504,7 +504,7 @@ public class ServerThreadsClient implements Runnable {
 					int anxiety_perception_change =Integer.parseInt( bufferedReader.readLine());
 					boolean recommendations =Boolean.parseBoolean( bufferedReader.readLine());
 
-Questionary q = new Questionary(emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, recommendations, anxiety_perception_change, anxiety_experience, emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, song_experience, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, energy_level, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, emotional_state, anxiety_perception_change, anxiety_perception_change, recommendations);
+Questionary q = new Questionary(emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, recommendations, anxiety_perception_change, anxiety_experience, emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, song_experience, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, energy_level, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, emotional_state, anxiety_perception_change, anxiety_perception_change, recommendations,"");
 System.out.println(q.toString());
 
 try {
@@ -516,6 +516,14 @@ try {
 
     kSession.insert(q);
     kSession.fireAllRules();
+
+    String resultado = q.getResultado();
+    System.out.println(resultado);
+    String[] lineas = resultado.split("\n"); 
+printWriter.println(lineas.length);
+    for (String linea : lineas) { 
+        printWriter.println(linea); 
+    }
 } catch (Throwable t) {
     t.printStackTrace();
 }

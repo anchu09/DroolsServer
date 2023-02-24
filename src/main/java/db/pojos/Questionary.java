@@ -55,7 +55,7 @@ public class Questionary implements Serializable{
 	private int enjoyment_change; //pregunta r
 	private int anxiety_perception_change; //pregunta s
 	private boolean recommendations; //pregunta t
-	
+	private String resultado;
 	
 	
 	
@@ -70,7 +70,7 @@ public class Questionary implements Serializable{
 			Experience song_experience, int relaxation_ability_change, int concentration_improvement,
 			int panic_reduction, Energy energy_level, int well_being_change, boolean try_different_genres,
 			int song_satisfaction, int stress_coping_change, int confidence_change, Emotion emotional_state,
-			int enjoyment_change, int anxiety_perception_change, boolean recommendations) {
+			int enjoyment_change, int anxiety_perception_change, boolean recommendations, String resultado) {
 		super();
 		this.emotion = emotion;
 		this.muscle_tension = muscle_tension;
@@ -116,6 +116,8 @@ public class Questionary implements Serializable{
 		this.enjoyment_change = enjoyment_change;
 		this.anxiety_perception_change = anxiety_perception_change;
 		this.recommendations = recommendations;
+		
+		this.resultado=resultado;
 	}
 	
 	@Override
@@ -142,6 +144,14 @@ public class Questionary implements Serializable{
 	}
 	
 	
+
+	public String getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(String resultado) {
+		this.resultado = resultado;
+	}
 
 	public Emotion getEmotion() {
 		return emotion;
