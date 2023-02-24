@@ -32,7 +32,7 @@ public class Questionary implements Serializable{
 	private int anxiety_level; //pregunta 18
 	private boolean treatment; //pregunta 19
 	private boolean control; //pregunta 20
-	private int duration; //pregunta 21
+	private int durat; //pregunta 21
 	private AnxietyLevel anxiety_experience; //pregunta 22
 	//despues
 	private Emotion emotion_2; //pregunta a
@@ -65,7 +65,7 @@ public class Questionary implements Serializable{
 			int appetite_weight, int sleep_pattern, int nervousness_tension, int concentration, int motivation,
 			int panic_fear, int mood, int stressful_events, int recurring_thoughts, boolean trauma,
 			int social_interaction, int relationships, int anxiety_level, boolean treatment, boolean control,
-			int duration, AnxietyLevel anxiety_experience, Emotion emotion_2, int sleep_improvement,
+			int durat, AnxietyLevel anxiety_experience, Emotion emotion_2, int sleep_improvement,
 			int muscle_tension_change, int anxiety_level_2, int relaxation, boolean listen_more_songs,
 			Experience song_experience, int relaxation_ability_change, int concentration_improvement,
 			int panic_reduction, Energy energy_level, int well_being_change, boolean try_different_genres,
@@ -92,7 +92,7 @@ public class Questionary implements Serializable{
 		this.anxiety_level = anxiety_level;
 		this.treatment = treatment;
 		this.control = control;
-		this.duration = duration;
+		this.durat = durat;
 		this.anxiety_experience = anxiety_experience;
 		
 		//segunda parte
@@ -127,7 +127,7 @@ public class Questionary implements Serializable{
 				+ ", panic_fear=" + panic_fear + ", mood=" + mood + ", stressful_events=" + stressful_events
 				+ ", recurring_thoughts=" + recurring_thoughts + ", trauma=" + trauma + ", social_interaction="
 				+ social_interaction + ", relationships=" + relationships + ", anxiety_level=" + anxiety_level
-				+ ", treatment=" + treatment + ", control=" + control + ", duration=" + duration
+				+ ", treatment=" + treatment + ", control=" + control + ", durat=" + durat
 				+ ", anxiety_experience=" + anxiety_experience + ", emotion_2=" + emotion_2 + ", sleep_improvement="
 				+ sleep_improvement + ", muscle_tension_change=" + muscle_tension_change + ", anxiety_level_2="
 				+ anxiety_level_2 + ", relaxation=" + relaxation + ", listen_more_songs=" + listen_more_songs
@@ -140,9 +140,9 @@ public class Questionary implements Serializable{
 				+ ", anxiety_perception_change=" + anxiety_perception_change + ", recommendations=" + recommendations
 				+ "]";
 	}
+	
+	
 
-	
-	
 	public Emotion getEmotion() {
 		return emotion;
 	}
@@ -303,12 +303,12 @@ public class Questionary implements Serializable{
 		this.control = control;
 	}
 
-	public int getDuration() {
-		return duration;
+	public int getdurat() {
+		return durat;
 	}
 
-	public void setDuration(int duration) {
-		this.duration = duration;
+	public void setdurat(int durat) {
+		this.durat = durat;
 	}
 
 	public AnxietyLevel getAnxiety_experience() {

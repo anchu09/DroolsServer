@@ -236,7 +236,7 @@ end
 //34
 rule "Different relaxation techniques" dialect  "mvel"
 when
-    $q : Questionary( duration < 5 ) 
+    $q : Questionary( durat < 5 ) 
 then
     System.out.println("Try other techniques such as breathing excercises, yoga or meditation.");
 end
@@ -314,7 +314,7 @@ end
 //45
 rule "Control their emotions" dialect  "mvel"
 when
-    $q : Questionary(duration > 3) 
+    $q : Questionary(durat > 3) 
 then
     System.out.println("Try listening to some relaxing music when they feel anxious to help control your emotions.");
 end
