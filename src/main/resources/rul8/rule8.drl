@@ -1,0 +1,68 @@
+package rul8
+ 
+ 
+
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+
+
+//36
+rule "Listen to same music genre" dialect  "java"
+when
+    q : Questionary(energy_level == Energy.SLIGHTLY_ENERGIZED || energy_level == Energy.MORE_ENERGIZED) 
+then
+    System.out.println("Keep listening to the same music genre regularly\n");
+end
+//37
+rule "New types of music" dialect  "java"
+when
+    q : Questionary(treatment == false) 
+then
+    System.out.println("Try new types of music\n");
+end
+//38
+rule "Listen music at bedtime" dialect  "java"
+when
+    q : Questionary(sleep_pattern > 3) 
+then
+    System.out.println("Try listening to some relaxing music at bedtime\n");
+end
+//39
+rule "Another type of music" dialect  "java"
+when
+    q : Questionary(song_satisfaction < 3) 
+then
+    System.out.println("Try listening to another type of music\n");
+end
+
+//40
+rule "Build confidence and improve social interactions." dialect  "java"
+when
+    q : Questionary(social_interaction <  3, confidence_change > 3) 
+then
+    System.out.println("Listening, playing music or singing can be a great way to build confidence and improve social interactions. \n");
+end
+//41
+rule "Nutritionist" dialect  "java"
+when
+    q : Questionary(appetite_weight > 3) 
+then
+    System.out.println("We recommend you to go to a nutritionist \n");
+end
+//42
+rule "Assist therapy and take medication" dialect  "java"
+when
+    q : Questionary(social_interaction > 3, relationships > 3) 
+then
+    System.out.println("We recommend you to go to therapy and take medication, which can help individuals manage their symptoms and improve their social relationships \n");
+end
+//43
+rule "Control their emotions" dialect  "java"
+when
+    q : Questionary(durat > 3) 
+then
+    System.out.println("Try listening to some relaxing music when they feel anxious to help control your emotions.\n");
+end

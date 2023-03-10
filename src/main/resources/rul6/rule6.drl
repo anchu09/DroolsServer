@@ -1,0 +1,46 @@
+package rul6
+ 
+ 
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+
+//26
+rule "Manage stressful and worrying situations in the future" dialect  "java"
+when
+    q : Questionary(stressful_events > 3, stress_coping_change > 3) 
+then
+    System.out.println("Listen to relaxing music to help manage stressful and worrying situations in the future. \n");
+end
+//27
+rule "Overcome traumatic experiences and reduce the associated anxiety" dialect  "java"
+when
+    q : Questionary(trauma == true, stress_coping_change > 3) 
+then
+    System.out.println("Try listening to overcome the anxiety caused by traumatic experienxies\n");
+end
+//28
+rule "Seek immediate medical attention," dialect  "java"
+when
+    q : Questionary(chest_pressure > 3) 
+then
+    System.out.println("Seek immediate medical attention. \n");
+end
+//29
+rule "Seeking medical treatment for their tremors" dialect  "java"
+when
+    q : Questionary(shaky > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Seek medical treatment\n");
+end
+//30
+rule "Stressful events therapy" dialect  "java"
+when
+    q : Questionary(stressful_events > 3) 
+then
+    System.out.println("We recomend you to go to a therapist to talk about the stresfull situations\n");
+end
+
+

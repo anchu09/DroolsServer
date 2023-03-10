@@ -3,10 +3,43 @@
     <kbase name="rules" packages="rules">
         <ksession name="ksession-rules"/>
     </kbase>
+    
     <kbase name="dtables" packages="dtables">
         <ksession name="ksession-dtables"/>
     </kbase>
     <kbase name="process" packages="process">
         <ksession name="ksession-process"/>
+    </kbase>
+    
+     <kbase name="rul1" packages="rul1">
+        <ksession name="usecase1"/>
+    </kbase>
+    
+     <kbase name="rul2" packages="rul2">
+        <ksession name="usecase2"/>
+    </kbase>
+    
+      <kbase name="rul3" packages="rul3">
+        <ksession name="usecase3"/>
+    </kbase>
+    
+       <kbase name="rul4" packages="rul4">
+        <ksession name="usecase4"/>
+    </kbase>
+    
+    <kbase name="rul5" packages="rul5">
+        <ksession name="usecase5"/>
+    </kbase>
+    
+    <kbase name="rul6" packages="rul6">
+        <ksession name="usecase6"/>
+    </kbase>
+    
+    <kbase name="rul7" packages="rul7">
+        <ksession name="usecase7"/>
+    </kbase>
+    
+    <kbase name="rul8" packages="rul8">
+        <ksession name="usecase8"/>
     </kbase>
 </kmodule>

@@ -1,0 +1,46 @@
+package rul2
+ 
+ 
+
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+
+//6
+rule "Try different genres for different emotional response" dialect  "java"
+when
+    q : Questionary(try_different_genres == true)
+then
+   	System.out.println("Experiment with different genres of music to see if there is any difference in your emotional response.\n");
+end
+//7
+rule "Effective method to improve well-being" dialect  "java"
+when
+    q : Questionary(enjoyment_change > 3, well_being_change > 3) 
+then
+    System.out.println("Congratulations!!! You have found an effective method to improve your emotional well-being.\n");
+end
+//8
+rule "Improve ability to handle stressful situations and increase confidence" dialect  "java"
+when
+    q : Questionary(stress_coping_change > 3, confidence_change > 3) 
+then
+    System.out.println("Keep listening to music to improve your ability to handle stressful situations and increase their confidence.\n");
+end
+//9
+rule "Listen relaxing music to control anxiety" dialect  "java"
+when
+    q : Questionary(listen_more_songs == true) 
+then
+    System.out.println("Keep listening to relaxing music to help control your anxiety. \n");
+end
+//10
+rule "Listen to relaxing music to improve ability to concentrate" dialect  "java"
+when
+    q : Questionary(relaxation > 3, concentration_improvement > 3) 
+then
+    System.out.println("Keep listening to relaxing music to improve your ability to concentrate on tasks.\n");
+end
+

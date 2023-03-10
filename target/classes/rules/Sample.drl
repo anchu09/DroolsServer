@@ -1,4 +1,4 @@
-package com.threadServer
+package rules
  
  
 
@@ -264,7 +264,7 @@ end
 //38
 rule "Listen to same music genre" dialect  "java"
 when
-    q : Questionary(energy_level == Energy.SLIGHTLY_ENERGIZED, energy_level == Energy.MORE_ENERGIZED) 
+    q : Questionary(energy_level == Energy.SLIGHTLY_ENERGIZED || energy_level == Energy.MORE_ENERGIZED) 
 then
     q.setResultado(q.getResultado()+"Keep listening to the same music genre regularly\n");
 end

@@ -1,0 +1,45 @@
+package rul1
+ 
+ 
+
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+//1
+rule "Reduce muscle tension with relaxing music" dialect  "java"
+when
+    q : Questionary(emotion_2 == Emotion.HAPPY || emotion_2 == Emotion.SAD, muscle_tension_change > 3)
+then
+    System.out.println("Suggest listening to relaxing music to reduce muscle tension and physical discomfort.\n");
+  
+end
+//2
+rule "Congratulate on effective anxiety control" dialect  "java"
+when
+    q : Questionary(anxiety_level_2 < 3, relaxation > 3)
+then
+    System.out.println("Congratulate the patient for finding an effective method to control their anxiety.\n\n");
+end
+//3
+rule "Suggest progressive muscle relaxation techniques" dialect  "java"
+when
+    q : Questionary(anxiety_level_2 < 3, sleep_improvement > 3)
+then
+    System.out.println("Suggest trying progressive muscle relaxation techniques to reduce physical discomfort.\n\n");
+end
+//4
+rule "Provide song recommendations" dialect  "java"
+when
+    q : Questionary(recommendations == true)
+then
+    System.out.println("Provide the patient with specific song recommendations that can help them control their anxiety.\n");
+end
+//5
+rule "Reduce feelings of panic with relaxing music" dialect  "java"
+when
+    q : Questionary(panic_reduction > 3, relaxation < 3)
+then
+    System.out.println("Suggest listening to relaxing music to reduce feelings of panic and irrationality.\n");
+end
