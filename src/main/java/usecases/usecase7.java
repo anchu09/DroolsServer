@@ -13,10 +13,10 @@ public class usecase7 {
 
 public static void main(String args[]) throws IOException {
     	
-	//in this usecase7 5 rules are going to be tested. Go to package rul6 and open rule7.drl file. Kiesession: usecase7
+	//in this usecase7 5 rules are going to be tested. Go to package rul7 and open rule7.drl file. Kiesession: usecase7
 	//In total, the questionnaire has 44 attributes. 
 	//To facilitate the test and the location of the attributes, the attributes that are filled in the constructor DO NOT SERVE.
-	//The tested attributes will then be filled with setters. The tested rules are from nº31 to nº35. 
+	//The tested attributes will  be filled with prefixed values using setters. The tested rules are from nº31 to nº35. 
 	
 	//The attributes that are going to be tested are:
 	

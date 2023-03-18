@@ -16,7 +16,7 @@ public static void main(String args[]) throws IOException {
 	//in this usecase1 5 rules are going to be tested. Go to package rul1 and open rulep.drl file. Kiesession: usecase1
 	//In total, the questionnaire has 44 attributes. 
 	//To facilitate the test and the location of the attributes, the attributes that are filled in the constructor DO NOT SERVE.
-	//The tested attributes will then be filled with setters. The tested rules are from nº1 to nº5. 
+	//The tested attributes will  be filled with prefixed values using setters. The tested rules are from nº1 to nº5. 
 	//The attributes that are going to be tested are:
 	
 	//Emotion emotion_2
@@ -27,10 +27,7 @@ public static void main(String args[]) throws IOException {
 	//boolean recommendations
 	//int panic_reduction
 	
-	//In total, the questionnaire has 44 attributes. 
-	//To facilitate the test and the location of the attributes, the attributes that are filled in the constructor DO NOT SERVE.
-	//The tested attributes will then be filled with setters
-       
+     
 	//Rule2 and rule5 are contradictory due to the attribute relaxation. For example: if relaxation>3, rule2 COULD be triggered, 
 	//but then rule5 will never be fired. If relaxation<3, rule2 will never be fired but rule 5 COULD be triggered if also panic_reduction<3. 
 	
@@ -45,9 +42,9 @@ public static void main(String args[]) throws IOException {
 	
 	//With these values the rules that SHOULD be triggered are:
 	
-	//Rule1 because emotion.HAPPY ==> Suggest listening to relaxing music to reduce muscle tension and physical discomfort.
-	//Rule3 due to anxiety_level_2<3 and sleep_improvement>3 ==> Suggest trying progressive muscle relaxation techniques to reduce physical discomfort.
-	//Rule4 due to recommendations=true ==> Provide the patient with specific song recommendations that can help them control their anxiety.
+	//Rule1 because emotion.HAPPY ==> We recommend you listening to relaxing music to reduce the muscle tension and physical discomfort
+	//Rule3 due to anxiety_level_2<3 and sleep_improvement>3 ==> Try progressive muscle relaxation techniques to reduce physical discomfort.
+	//Rule4 due to recommendations=true ==> We recommend you to listening to songs of the same artist or similar genres
 	
 	
     	Questionary q = new Questionary(Emotion.SAD, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, true, 2, 2, 2, 

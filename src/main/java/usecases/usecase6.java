@@ -16,7 +16,7 @@ public static void main(String args[]) throws IOException {
 	//in this usecase6 5 rules are going to be tested. Go to package rul6 and open rule6.drl file. Kiesession: usecase6
 	//In total, the questionnaire has 44 attributes. 
 	//To facilitate the test and the location of the attributes, the attributes that are filled in the constructor DO NOT SERVE.
-	//The tested attributes will then be filled with setters. The tested rules are from nº26 to nº30. 
+	//The tested attributes will  be filled with prefixed values using setters. The tested rules are from nº26 to nº30. 
 	
 	//The attributes that are going to be tested are:
 	
