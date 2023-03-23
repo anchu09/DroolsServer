@@ -72,6 +72,7 @@ public class ServerThreadsClient implements Runnable {
 
 	public ServerThreadsClient(Socket socket) {
 		this.socket = socket;
+
 	}
 
 	private static void releaseResourcesClient(PrintWriter printWriter, BufferedReader bufferedReader,
@@ -181,7 +182,7 @@ public class ServerThreadsClient implements Runnable {
 				if (line.contains("stop")) {
 					System.out.println("Stopping the server");
 					break;
-					//System.exit(0);
+					// System.exit(0);
 				} else if (line.contains("checkPassword")) {
 
 					try {
@@ -228,8 +229,6 @@ public class ServerThreadsClient implements Runnable {
 						d = getInter().getDoctorbyUser(u);
 						printWriter.println(d.toString());
 
-					} catch (EOFException ex) {
-						System.out.println("All data have been correctly read.");
 					} catch (IOException ex) {
 						System.out.println("Unable to read from the client or send client.");
 						Logger.getLogger(ServerThreadsClient.class.getName()).log(Level.SEVERE, null, ex);
@@ -242,16 +241,11 @@ public class ServerThreadsClient implements Runnable {
 					try {
 
 						r = new Role(bufferedReader.readLine());
-						System.out.println("aaaaaa" + r.toString());
 
 						User u = new User(bufferedReader.readLine(), r);
-						System.out.println("aaaaaa" + u.toString());
-						System.out.println("111111");
-						System.out.println("zzz" + u.getId());
 
 						p = getInter().getPatByUser(u);
 
-						System.out.println("111111");
 						System.out.println(p);
 						System.out.println(p.toString());
 						printWriter.println(p.toString());
@@ -453,86 +447,91 @@ public class ServerThreadsClient implements Runnable {
 
 					printWriter.println("" + checkemail);
 
-				} 
-				
+				}
+
 				else if (line.contains("Drools")) {
 					System.out.println("Drools");
 					Emotion emotion = Emotion.valueOf(bufferedReader.readLine());
 					int muscle_tension = Integer.parseInt(bufferedReader.readLine());
 					int chest_pressure = Integer.parseInt(bufferedReader.readLine());
-					int breathing_difficulty =Integer.parseInt( bufferedReader.readLine());
+					int breathing_difficulty = Integer.parseInt(bufferedReader.readLine());
 					int shaky = Integer.parseInt(bufferedReader.readLine());
-					int appetite_weight =Integer.parseInt( bufferedReader.readLine());
-					int sleep_pattern =Integer.parseInt( bufferedReader.readLine());
+					int appetite_weight = Integer.parseInt(bufferedReader.readLine());
+					int sleep_pattern = Integer.parseInt(bufferedReader.readLine());
 					int nervousness_tension = Integer.parseInt(bufferedReader.readLine());
 					int concentration = Integer.parseInt(bufferedReader.readLine());
 					int motivation = Integer.parseInt(bufferedReader.readLine());
 					int panic_fear = Integer.parseInt(bufferedReader.readLine());
 					int mood = Integer.parseInt(bufferedReader.readLine());
-					int stressful_events =Integer.parseInt( bufferedReader.readLine());
+					int stressful_events = Integer.parseInt(bufferedReader.readLine());
 					int recurring_thoughts = Integer.parseInt(bufferedReader.readLine());
 					boolean trauma = Boolean.parseBoolean(bufferedReader.readLine());
-					int social_interaction =Integer.parseInt( bufferedReader.readLine());
-					int relationships =Integer.parseInt( bufferedReader.readLine());
+					int social_interaction = Integer.parseInt(bufferedReader.readLine());
+					int relationships = Integer.parseInt(bufferedReader.readLine());
 					int anxiety_level = Integer.parseInt(bufferedReader.readLine());
-					boolean treatment =Boolean.parseBoolean( bufferedReader.readLine());
+					boolean treatment = Boolean.parseBoolean(bufferedReader.readLine());
 					boolean control = Boolean.parseBoolean(bufferedReader.readLine());
-					int duration =Integer.parseInt( bufferedReader.readLine());
-					AnxietyLevel anxiety_experience =AnxietyLevel.valueOf( bufferedReader.readLine());
-					
-					
-					
-					
+					int duration = Integer.parseInt(bufferedReader.readLine());
+					AnxietyLevel anxiety_experience = AnxietyLevel.valueOf(bufferedReader.readLine());
+
 					Emotion emotion_2 = Emotion.valueOf(bufferedReader.readLine());
-					int sleep_improvement =Integer.parseInt( bufferedReader.readLine());
+					int sleep_improvement = Integer.parseInt(bufferedReader.readLine());
 					int muscle_tension_change = Integer.parseInt(bufferedReader.readLine());
 					int anxiety_level_2 = Integer.parseInt(bufferedReader.readLine());
 					int relaxation = Integer.parseInt(bufferedReader.readLine());
 					boolean listen_more_songs = Boolean.parseBoolean(bufferedReader.readLine());
 					Experience song_experience = Experience.valueOf(bufferedReader.readLine());
-					int relaxation_ability_change =Integer.parseInt( bufferedReader.readLine());
-					int concentration_improvement =Integer.parseInt( bufferedReader.readLine());
+					int relaxation_ability_change = Integer.parseInt(bufferedReader.readLine());
+					int concentration_improvement = Integer.parseInt(bufferedReader.readLine());
 					int panic_reduction = Integer.parseInt(bufferedReader.readLine());
 					Energy energy_level = Energy.valueOf(bufferedReader.readLine());
-					int well_being_change =Integer.parseInt(bufferedReader.readLine());
-					boolean try_different_genres =Boolean.parseBoolean( bufferedReader.readLine());
+					int well_being_change = Integer.parseInt(bufferedReader.readLine());
+					boolean try_different_genres = Boolean.parseBoolean(bufferedReader.readLine());
 					int song_satisfaction = Integer.parseInt(bufferedReader.readLine());
 					int stress_coping_change = Integer.parseInt(bufferedReader.readLine());
 					int confidence_change = Integer.parseInt(bufferedReader.readLine());
-					Emotion emotional_state =Emotion.valueOf( bufferedReader.readLine());
-					int enjoyment_change =Integer.parseInt( bufferedReader.readLine());
-					int anxiety_perception_change =Integer.parseInt( bufferedReader.readLine());
-					boolean recommendations =Boolean.parseBoolean( bufferedReader.readLine());
+					Emotion emotional_state = Emotion.valueOf(bufferedReader.readLine());
+					int enjoyment_change = Integer.parseInt(bufferedReader.readLine());
+					int anxiety_perception_change = Integer.parseInt(bufferedReader.readLine());
+					boolean recommendations = Boolean.parseBoolean(bufferedReader.readLine());
 
-Questionary q = new Questionary(emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, recommendations, anxiety_perception_change, anxiety_experience, emotional_state, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, recommendations, song_experience, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, energy_level, anxiety_perception_change, recommendations, anxiety_perception_change, anxiety_perception_change, anxiety_perception_change, emotional_state, anxiety_perception_change, anxiety_perception_change, recommendations,"");
-System.out.println(q.toString());
+					Questionary q = new Questionary(emotional_state, anxiety_perception_change,
+							anxiety_perception_change, anxiety_perception_change, anxiety_perception_change,
+							anxiety_perception_change, anxiety_perception_change, anxiety_perception_change,
+							anxiety_perception_change, anxiety_perception_change, anxiety_perception_change,
+							anxiety_perception_change, anxiety_perception_change, anxiety_perception_change,
+							recommendations, anxiety_perception_change, anxiety_perception_change,
+							anxiety_perception_change, recommendations, recommendations, anxiety_perception_change,
+							anxiety_experience, emotional_state, anxiety_perception_change, anxiety_perception_change,
+							anxiety_perception_change, anxiety_perception_change, recommendations, song_experience,
+							anxiety_perception_change, anxiety_perception_change, anxiety_perception_change,
+							energy_level, anxiety_perception_change, recommendations, anxiety_perception_change,
+							anxiety_perception_change, anxiety_perception_change, emotional_state,
+							anxiety_perception_change, anxiety_perception_change, recommendations, "");
+//System.out.println(q.toString());
 
-try {
-    // load up the knowledge base
-    KieServices ks = KieServices.Factory.get();
-    KieContainer kContainer = ks.getKieClasspathContainer();
-	KieSession kSession = kContainer.newKieSession("ksession-rules");
+					try {
+						// load up the knowledge base
+						KieServices ks = KieServices.Factory.get();
+						KieContainer kContainer = ks.getKieClasspathContainer();
+						KieSession kSession = kContainer.newKieSession("ksession-rules");
 
+						kSession.insert(q);
+						kSession.fireAllRules();
 
-    kSession.insert(q);
-    kSession.fireAllRules();
+						String resultado = q.getResultado();
+						// System.out.println(resultado);
+						String[] lineas = resultado.split("\n");
+						printWriter.println(lineas.length);
+						for (String linea : lineas) {
+							printWriter.println(linea);
+						}
+					} catch (Throwable t) {
+						t.printStackTrace();
+					}
 
-    String resultado = q.getResultado();
-    System.out.println(resultado);
-    String[] lineas = resultado.split("\n"); 
-printWriter.println(lineas.length);
-    for (String linea : lineas) { 
-        printWriter.println(linea); 
-    }
-} catch (Throwable t) {
-    t.printStackTrace();
-}
+				}
 
-
-				} 
-				
-				
-				
 				else if (line.contains("oncreateuserDoc")) {
 					System.out.println("oncreateuserDoc ");
 					String doctorText = bufferedReader.readLine();
@@ -680,16 +679,11 @@ printWriter.println(lineas.length);
 
 						String s1 = "";
 
-						System.out.println("2-gtg");
-
 						for (int i = 0; i < lista.length; i++) {
 
 							s1 = s1 + lista[i] + "\n";
 
 						}
-						System.out.println("2-gtg");
-
-						System.out.println(s1);
 
 						File f = new File("../AnsioTunesServer/reports/" + pcurrent.getName() + "_" + pcurrent.getID()
 								+ "_" + numAleatorio + "_" + LocalDate.now() + ".txt");
@@ -698,7 +692,6 @@ printWriter.println(lineas.length);
 								"../AnsioTunesServer/reports/" + pcurrent.getName() + "_" + pcurrent.getID() + "_"
 										+ numAleatorio + "_" + LocalDate.now() + ".txt",
 								Date.valueOf(LocalDate.now()), pcurrent.getId());
-						System.out.println("22222");
 
 						getInter().addReport(pcurrent, r);
 						try {
@@ -712,7 +705,6 @@ printWriter.println(lineas.length);
 						PrintWriter p = new PrintWriter(f);
 						p.println(s1);
 						p.close();
-						System.out.println("7777");
 
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -722,7 +714,7 @@ printWriter.println(lineas.length);
 					String ruta = bufferedReader.readLine();
 					String tipo = bufferedReader.readLine();
 					ArrayList<Integer> datos = leerfichero(ruta, tipo);
-					System.out.println("tam es" + ruta);
+					// System.out.println("tam es" + ruta);
 					printWriter.println(datos.size() + "");
 
 					for (int i = 0; i < datos.size(); i++) {
@@ -741,7 +733,6 @@ printWriter.println(lineas.length);
 
 						String patientText = bufferedReader.readLine();
 
-						System.out.println("ññññ");
 						System.out.println(patientText);
 						float score = 0;
 						if (segundo.contains("score")) {
@@ -795,11 +786,9 @@ printWriter.println(lineas.length);
 
 			}
 
-		} catch (SocketException sex)
-		{
+		} catch (SocketException sex) {
 			System.out.println("el cliente: " + " se ha cerrado.");
-		}
-		catch (IOException ex) {
+		} catch (IOException ex) {
 			Logger.getLogger(ServerThreadsClient.class.getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			getInter().disconnect();
@@ -836,8 +825,6 @@ printWriter.println(lineas.length);
 				}
 
 			}
-
-			System.out.println("he salido");
 
 		} catch (FileNotFoundException ex1) {
 			System.out.println("archivo no encontrado");

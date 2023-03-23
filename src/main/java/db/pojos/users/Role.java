@@ -5,53 +5,49 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "roles")
-public class Role implements Serializable{
+public class Role implements Serializable {
 
 	/**
 	 * 
-	 */ 
+	 */
 	private static final long serialVersionUID = 6755642485952853818L;
-	
+
 	@Id
 	@GeneratedValue(generator = "roles")
-	@TableGenerator(name = "roles", table = "sqlite_sequence",
-		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "roles")
+	@TableGenerator(name = "roles", table = "sqlite_sequence", pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "roles")
 	private Integer id;
 	private String name;
-	@OneToMany(mappedBy="role")
+	@OneToMany(mappedBy = "role")
 	private List<User> users;
-	
+
 	public Role() {
 		super();
 		this.users = new ArrayList<User>();
 	}
-	
+
 	public Role(String name) {
 		super();
 		this.name = name;
 		this.users = new ArrayList<User>();
-	}	
-	
+	}
+
 	public Role(Integer id, String name, List<User> users) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.users = users;
 	}
-	
-	
-	public Role(String toString,List<User> users) {
+
+	public Role(String toString, List<User> users) {
 		super();
 
-		
-		this.id= Integer.parseInt(toString.substring(toString.indexOf("id=")+3,toString.indexOf(", na")));
-		this.name=toString.substring(toString.indexOf("me=")+3,toString.indexOf(", us"));
+		this.id = Integer.parseInt(toString.substring(toString.indexOf("id=") + 3, toString.indexOf(", na")));
+		this.name = toString.substring(toString.indexOf("me=") + 3, toString.indexOf(", us"));
 
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Role [id=" + id + ", name=" + name + ", users=" + users + "]";
@@ -60,25 +56,23 @@ public class Role implements Serializable{
 	public Integer getId() {
 		return id;
 	}
-	
-	
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public List<User> getUsers() {
 		return users;
 	}
-	
+
 	public void setUsers(List<User> users) {
 		this.users = users;
 	}
@@ -108,12 +102,4 @@ public class Role implements Serializable{
 		return true;
 	}
 
-
-
-
-
-
-	
-	
-	
 }

@@ -1,0 +1,46 @@
+package rul3
+ 
+ 
+
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+
+
+//11
+rule "Listen to relaxing music to reduce muscle tension and physical discomfort" dialect  "java"
+when
+    q : Questionary(relaxation > 3, muscle_tension_change > 3) 
+then
+    System.out.println("Keep listening to relaxing music to reduce muscle tension and physical discomfort. \n");
+end
+//12
+rule "Improve general emotional state. " dialect  "java"
+when
+    q : Questionary(emotional_state != Emotion.HAPPY, relaxation > 3) 
+then
+    System.out.println("Listen to relaxing music to improve your general emotional state.\n");
+end
+//13
+rule "Reduce the feeling of chest pressure and muscle tension. " dialect  "java"
+when
+    q : Questionary(chest_pressure > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Try listening to music to reduce the feeling of chest pressure and muscle tension.\n");
+end
+//14
+rule "Help improve their breathing" dialect  "java"
+when
+    q : Questionary(breathing_difficulty > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Listen to music to help improve your breathing\n");
+end
+//15
+rule "Help reduce tremors" dialect  "java"
+when
+    q : Questionary(shaky > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Listen to music to help reduce tremors.\n");
+end

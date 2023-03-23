@@ -15,10 +15,10 @@ import db.interfaces.UserManager;
 import db.pojos.users.Role;
 import db.pojos.users.User;
 
-public class JPAUserManagment implements UserManager{
+public class JPAUserManagment implements UserManager {
 
 	private EntityManager em;
-	
+
 	@Override
 	public void connect() {
 		em = Persistence.createEntityManagerFactory("user-login").createEntityManager();
@@ -26,12 +26,12 @@ public class JPAUserManagment implements UserManager{
 		em.createNativeQuery("PRAGMA foreign_keys = ON").executeUpdate();
 		em.getTransaction().commit();
 		List<Role> existingRoles = this.getRoles();
-		if(existingRoles.size() < 2) {
+		if (existingRoles.size() < 2) {
 			this.newRole(new Role("doctor"));
 			this.newRole(new Role("patient"));
-			
+
 		}
-		
+
 	}
 
 	@Override
@@ -76,9 +76,9 @@ public class JPAUserManagment implements UserManager{
 			q.setParameter(1, email);
 			q.setParameter(2, hash);
 			return (User) q.getSingleResult();
-		}catch(NoSuchAlgorithmException e) {
+		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
-		}catch(NoResultException nre) {
+		} catch (NoResultException nre) {
 			return null;
 		}
 		return null;
@@ -89,16 +89,15 @@ public class JPAUserManagment implements UserManager{
 		try {
 			Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ?", User.class);
 			q.setParameter(1, email);
-			User temp = (User)q.getSingleResult();
-			if(temp.getEmail().equalsIgnoreCase(email)) {
+			User temp = (User) q.getSingleResult();
+			if (temp.getEmail().equalsIgnoreCase(email)) {
 				return true;
-			}else {
+			} else {
 				return false;
 			}
-		}catch(NoResultException nre) {
+		} catch (NoResultException nre) {
 			return false;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return false;
@@ -106,10 +105,10 @@ public class JPAUserManagment implements UserManager{
 
 	@Override
 	public List<Integer> deleteUser(String mail, String password) {
-		List<Integer> listaresultado=new ArrayList();
-		int user_id=0;
-		int role_id=0;
-try {
+		List<Integer> listaresultado = new ArrayList();
+		int user_id = 0;
+		int role_id = 0;
+		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(password.getBytes());
 			byte[] hash = md.digest();
@@ -119,24 +118,22 @@ try {
 			if (q.getResultList().isEmpty()) {
 				JOptionPane.showMessageDialog(null, "Wrong user name or password.");
 
-			}else {
-				
-				
-				
+			} else {
+
 				User u = (User) q.getSingleResult();
-				user_id=u.getId();
+				user_id = u.getId();
 
 				listaresultado.add(user_id);
 				listaresultado.add(u.getRole().getId());
-				
+
 				em.getTransaction().begin();
 				em.remove(u);
-				em.getTransaction().commit();	
+				em.getTransaction().commit();
 				JOptionPane.showMessageDialog(null, "Account deleted.");
 				return listaresultado;
 			}
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return listaresultado;
@@ -153,58 +150,57 @@ try {
 			q.setParameter(1, oldMail);
 			q.setParameter(2, hash);
 			User u = (User) q.getSingleResult();
-			
+
 			em.getTransaction().begin();
 			u.setEmail(newMail);
 			em.getTransaction().commit();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-	}@Override
+
+	}
+
+	@Override
 	public void updateUserMailWithoutpass(String newMail, String oldMail) {
 		try {
-			
+
 			Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ? ", User.class);
 			q.setParameter(1, oldMail);
 			User u = (User) q.getSingleResult();
-			
+
 			em.getTransaction().begin();
 			u.setEmail(newMail);
 			em.getTransaction().commit();
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@Override
- 	public boolean updateUserPassword(String mail, String newPassword, String oldPassword,boolean catchdone) {
- 		try {
- 			MessageDigest md = MessageDigest.getInstance("MD5");
- 			md.update(oldPassword.getBytes());
- 			byte[] hash = md.digest();
- 			Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ? AND password = ?", User.class);
- 			q.setParameter(1, mail);
- 			q.setParameter(2, hash);
- 			User u = (User) q.getSingleResult();
- 			MessageDigest md2 = MessageDigest.getInstance("MD5");
- 			md2.update(newPassword.getBytes());
- 			byte[] hash2 = md2.digest();
+	public boolean updateUserPassword(String mail, String newPassword, String oldPassword, boolean catchdone) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(oldPassword.getBytes());
+			byte[] hash = md.digest();
+			Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ? AND password = ?", User.class);
+			q.setParameter(1, mail);
+			q.setParameter(2, hash);
+			User u = (User) q.getSingleResult();
+			MessageDigest md2 = MessageDigest.getInstance("MD5");
+			md2.update(newPassword.getBytes());
+			byte[] hash2 = md2.digest();
 
- 			em.getTransaction().begin();
- 			u.setPassword(hash2);
- 			em.getTransaction().commit();
- 		}catch(Exception e) {
- 			catchdone=true;
- 		    JOptionPane.showMessageDialog(null, "The current password is not correct");
+			em.getTransaction().begin();
+			u.setPassword(hash2);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			catchdone = true;
+			JOptionPane.showMessageDialog(null, "The current password is not correct");
 
- 		}
- 		return catchdone;
+		}
+		return catchdone;
 
-
- 	}
-
-	
+	}
 
 }

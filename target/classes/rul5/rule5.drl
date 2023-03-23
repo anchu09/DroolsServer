@@ -1,0 +1,45 @@
+package rul5
+ 
+ 
+
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+
+//21
+rule "Improvement in their emotional experience after listening to music" dialect  "java"
+when
+    q : Questionary(anxiety_experience == AnxietyLevel.MODERATE_ANXIETY || anxiety_experience == AnxietyLevel.SEVERE_ANXIETY, emotional_state == Emotion.HAPPY) 
+then
+    System.out.println("Congratulations!!! you have improve your anxiety\n");
+end
+//22
+rule "Reduce the sensation of shortness of breath and feelings of fear" dialect  "java"
+when
+    q : Questionary(breathing_difficulty > 3, panic_reduction < 3) 
+then
+    System.out.println("Try listening to relaxing music when you feel a panic attack to reduce the sensation of shortness of breath and feelings of fear\n");
+end
+//23
+rule "Reduce muscle tension and physical discomfort" dialect  "java"
+when
+    q : Questionary(appetite_weight > 3, muscle_tension_change < 3) 
+then
+    System.out.println("Try listening to relaxing music to reduce muscle tension and physical discomfort\n");
+end
+//24
+rule "Stay relaxed and calm " dialect  "java"
+when
+    q : Questionary(nervousness_tension > 3, relaxation > 3) 
+then
+   	System.out.println("Congratulations!!! Keep listening to music \n");
+end
+//25
+rule "Restore motivation in the activities that used to enjoy." dialect  "java"
+when
+    q : Questionary(motivation > 3, enjoyment_change > 3) 
+then
+    System.out.println("Listen to some music when you are feeling unmotivated. \n");
+end

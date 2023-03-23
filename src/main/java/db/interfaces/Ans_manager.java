@@ -1,6 +1,5 @@
 package db.interfaces;
 
-
 import java.util.*;
 
 import db.pojos.*;
@@ -9,11 +8,15 @@ import javafx.collections.ObservableList;
 
 public interface Ans_manager {
 	// Connects with the database and, if needed, performs necessary setup
-		public void connect();
-		public void connectWithNoPrint();
-		// Closes the connection with the database
-		public void disconnect();
-		public void creatTables();
+	public void connect();
+
+	public void connectWithNoPrint();
+
+	// Closes the connection with the database
+	public void disconnect();
+
+	public void creatTables();
+
 	void addReport(Patient p, Report r);
 
 	void addPatientUser(Patient p, User u);
@@ -49,14 +52,17 @@ public interface Ans_manager {
 	List<Patient> getAllPatientsTableDoctors(Doctor d);
 
 	void addPatient(Patient p);
+
 	List<Patient> searchPatientGeneric(String feature, String type);
+
 	void deletePersonByUserId(List<Integer> lista);
+
 	Patient getPatByUserID(int userId);
+
 	void deleteReportbyLink(String link);
+
 	List<Doctor> searchDoctorGeneric(String feature, String type);
+
 	List<Doctor> getAllDoctorsTablePatients();
-
-
-
 
 }

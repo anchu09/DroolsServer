@@ -1,0 +1,44 @@
+package rul7
+ 
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+
+//31
+rule "Improve ability to concentrate" dialect  "java"
+when
+    q : Questionary(concentration < 3, concentration_improvement > 3) 
+then
+    System.out.println("Listen to music to improve ability to concentrate\n");
+end
+
+//32
+rule "Different relaxation techniques" dialect  "java"
+when
+    q : Questionary( durat < 5 ) 
+then
+    System.out.println("Try other techniques such as breathing excercises, yoga or meditation.\n");
+end
+//33
+rule "Assist cognitive-behavioral therapy " dialect  "java"
+when
+    q : Questionary(panic_fear > 3, panic_reduction < 3, mood > 3) 
+then
+    System.out.println("We recommend you to assist cognitive-behavioral therapy \n");
+end
+//34
+rule "Mindfulness techniques" dialect  "java"
+when
+    q : Questionary(recurring_thoughts > 3) 
+then
+    System.out.println("Try practicing mindfulness techniques for focusing on the present moment\n");
+end
+//35
+rule "Improvement on quality of life" dialect  "java"
+when
+    q : Questionary(treatment == true, control == true) 
+then
+    System.out.println("Congratulations on your improvement!!!\n");
+end

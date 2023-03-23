@@ -1,0 +1,47 @@
+package rul4
+ 
+ 
+
+import db.pojos.Questionary;
+import db.pojos.Energy;
+import db.pojos.AnxietyLevel;
+import db.pojos.Emotion;
+import db.pojos.Experience;
+
+//16
+rule "Reduce the constant feeling of nervousness and tension" dialect  "java"
+when
+    q : Questionary(nervousness_tension > 3, relaxation < 3) 
+then
+    System.out.println("Try listening to music to help reduce the constant feeling of nervousness and tension\n");
+end
+//17
+rule "Improve their ability to concentrate on tasks." dialect  "java"
+when
+    q : Questionary(concentration > 3, concentration_improvement < 3) 
+then
+    System.out.println("Listen to music to help improve your ability to concentrate on tasks.\n");
+end
+
+//18
+rule "Reduce feelings of panic or irrational fear." dialect  "java"
+when
+    q : Questionary(panic_fear > 3, panic_reduction < 3) 
+then
+    System.out.println("Listen to music to help reduce feelings of panic or irrational fear.\n");
+end
+//19
+rule "Ability to cope with stressful situations." dialect  "java"
+when
+    q : Questionary(stressful_events > 3, stress_coping_change < 3) 
+then
+    System.out.println("Listen to music to help improve the ability to cope with stressful situations.\n");
+end
+//20
+rule "Praise for taking steps to control her anxiety." dialect  "java"
+when
+    q : Questionary(anxiety_level > 3, relaxation > 3) 
+then
+    System.out.println("Well done on your way of controlling your anxiety\n");
+end
+

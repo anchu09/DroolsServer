@@ -142,7 +142,8 @@ public class JDBCManagment implements Ans_manager {
 	public void addPatientUser(Patient p, User u) {
 		try {
 
-			String sql = "INSERT INTO patients (name, DNI, score, favourite_music, id_doc, user_id)" + "VALUES (?, ?, ?,?, ?,?)";
+			String sql = "INSERT INTO patients (name, DNI, score, favourite_music, id_doc, user_id)"
+					+ "VALUES (?, ?, ?,?, ?,?)";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, p.getName());
 			prep.setString(2, p.getID());
@@ -344,15 +345,10 @@ public class JDBCManagment implements Ans_manager {
 				String patName = rs.getString("name");
 				String IDreal = rs.getString("DNI");
 				String fav_song = rs.getString("favourite_music");
-				float score= rs.getFloat("score");
-				int idDoc= rs.getInt("id_doc");
-				return new Patient(id, patName, IDreal, fav_song,score,idDoc);
-				
-	
-				
-				
-				
-				
+				float score = rs.getFloat("score");
+				int idDoc = rs.getInt("id_doc");
+				return new Patient(id, patName, IDreal, fav_song, score, idDoc);
+
 			}
 			prep.close();
 			rs.close();
@@ -364,19 +360,17 @@ public class JDBCManagment implements Ans_manager {
 
 	@Override
 	public Patient getPatByUser(User u) {
-		try {			
+		try {
 			System.out.println(u);
-
 
 			String sql = "SELECT * FROM patients WHERE user_id = ?";
 			PreparedStatement prep = c.prepareStatement(sql);
-
 
 			prep.setInt(1, u.getId());
 			ResultSet rs = prep.executeQuery();
 			if (rs.next()) {
 				int id = rs.getInt("id");
-				System.out.println("id: "+id);
+				System.out.println("id: " + id);
 
 				String pat_name = rs.getString("name");
 				String dni = rs.getString("DNI");
@@ -384,7 +378,7 @@ public class JDBCManagment implements Ans_manager {
 				String favourite_music = rs.getString("favourite_music");
 				int docId = rs.getInt("id_doc");
 
-				return new Patient(id, pat_name, dni, favourite_music, score,docId);
+				return new Patient(id, pat_name, dni, favourite_music, score, docId);
 			}
 			prep.close();
 			rs.close();
@@ -393,7 +387,7 @@ public class JDBCManagment implements Ans_manager {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Patient getPatByUserID(int userId) {
 		try {
@@ -410,7 +404,8 @@ public class JDBCManagment implements Ans_manager {
 
 				int docId = rs.getInt("id_doc");
 
-				return new Patient(id, pat_name, dni, favourite_music, score,docId);			}
+				return new Patient(id, pat_name, dni, favourite_music, score, docId);
+			}
 			prep.close();
 			rs.close();
 		} catch (Exception e) {
@@ -444,7 +439,6 @@ public class JDBCManagment implements Ans_manager {
 		return docs;
 	}
 
-	
 //	@Override
 //	public List<Doctor> searchDoctorGeneric(String feature, String type) {
 //		List<Doctor> doctors = new ArrayList<Doctor>();
@@ -477,14 +471,12 @@ public class JDBCManagment implements Ans_manager {
 //		}
 //		return doctors;
 //	}
-	
+
 	@Override
 	public List<String> getAllReportsbyPatient(Patient p) {
-			System.out.println("el paciente es "+ p.toString());
-			List<String> links = new ArrayList<String>();
-		System.out.println("aki no llega "+ p.toString());
+		System.out.println("el paciente es " + p.toString());
+		List<String> links = new ArrayList<String>();
 
-		
 		try {
 
 			String sql = "SELECT * FROM reports WHERE link LIKE ?";
@@ -495,7 +487,7 @@ public class JDBCManagment implements Ans_manager {
 				int id = rs.getInt("id");
 
 				String link = rs.getString("link");
-				System.out.println("cadalink es "+link);
+				System.out.println("cada link es " + link);
 				links.add(link);
 			}
 		} catch (Exception e) {
@@ -584,7 +576,7 @@ public class JDBCManagment implements Ans_manager {
 		return patients;
 
 	}
-	
+
 	@Override
 	public List<Doctor> getAllDoctorsTablePatients() {
 		return null;
@@ -595,7 +587,6 @@ public class JDBCManagment implements Ans_manager {
 		List<Doctor> doctors = new ArrayList<Doctor>();
 
 		try {
-
 
 			String sql;
 			sql = "SELECT * FROM  doctors WHERE " + feature + " LIKE ?";
@@ -623,38 +614,31 @@ public class JDBCManagment implements Ans_manager {
 		return doctors;
 	}
 
-	
-	
-	
-	
-	
-	
 	@Override
 	public void deletePersonByUserId(List<Integer> lista) {
-		
 
-		String sql ="";
-		if(lista.get(1)==1) {
-		 sql = "DELETE FROM doctors WHERE user_id = ?";
-		}else {
-			 sql = "DELETE FROM patients WHERE user_id = ?";
+		String sql = "";
+		if (lista.get(1) == 1) {
+			sql = "DELETE FROM doctors WHERE user_id = ?";
+		} else {
+			sql = "DELETE FROM patients WHERE user_id = ?";
 
 		}
 		PreparedStatement prep;
 		try {
-			
-			if(lista.get(1)==2) {
-				List<String>  listaArchivos = ServerThreadsClient.getInter().getAllReportsbyPatient(ServerThreadsClient.getInter().getPatByUserID(lista.get(0)));
-				
 
-				for(int i=0; i<listaArchivos.size();i++){
+			if (lista.get(1) == 2) {
+				List<String> listaArchivos = ServerThreadsClient.getInter()
+						.getAllReportsbyPatient(ServerThreadsClient.getInter().getPatByUserID(lista.get(0)));
+
+				for (int i = 0; i < listaArchivos.size(); i++) {
 					ServerThreadsClient.getInter().deleteReportbyLink(listaArchivos.get(i));
-					System.out.println("el fichero a borrar es "+listaArchivos.get(i));
+					System.out.println("el fichero a borrar es " + listaArchivos.get(i));
 					File fichero = new File(listaArchivos.get(i));
-					
+
 					fichero.delete();
 				}
-				
+
 			}
 			prep = c.prepareStatement(sql);
 			prep.setInt(1, lista.get(0));
@@ -665,7 +649,7 @@ public class JDBCManagment implements Ans_manager {
 		}
 
 	}
-	
+
 	@Override
 	public void deleteReportbyLink(String link) {
 		String sql = "DELETE FROM reports WHERE link = ?";
@@ -681,5 +665,4 @@ public class JDBCManagment implements Ans_manager {
 
 	}
 
-	
 }

@@ -2,11 +2,11 @@ package db.pojos.users;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import javax.persistence.*; 
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable{
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -15,8 +15,7 @@ public class User implements Serializable{
 
 	@Id
 	@GeneratedValue(generator = "users")
-	@TableGenerator(name = "users", table = "sqlite_sequence", 
-		pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "users")
+	@TableGenerator(name = "users", table = "sqlite_sequence", pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "users")
 	private Integer id;
 	private String email;
 	@Lob
@@ -24,7 +23,7 @@ public class User implements Serializable{
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_id")
 	private Role role;
-	
+
 	public User() {
 		super();
 	}
@@ -34,35 +33,36 @@ public class User implements Serializable{
 		this.email = email;
 		this.password = password;
 		this.role = role;
-	} 
+	}
+
 	public User(String toString, Role r) {
 		super();
-		this.id= Integer.parseInt(toString.substring(toString.indexOf("id=")+3,toString.indexOf(", em")));
-	this.email=toString.substring(toString.indexOf("il=")+3,toString.indexOf(", pas"));
+		this.id = Integer.parseInt(toString.substring(toString.indexOf("id=") + 3, toString.indexOf(", em")));
+		this.email = toString.substring(toString.indexOf("il=") + 3, toString.indexOf(", pas"));
 //	this.password=toString.substring(toString.indexOf("word="),toString.indexOf(", ro"));
-	this.role=r;
-	
-	
-	} 
+		this.role = r;
+
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + Arrays.toString(password) + ", role=" + role
 				+ "]";
 	}
-	public User(int id,String email, byte[] password, Role role) {
+
+	public User(int id, String email, byte[] password, Role role) {
 		super();
-		this.id=id;
+		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.role = role;
-	} 
-
+	}
 
 	public User(Integer id, String mail, Role r) {
-		
-		this.id= id;
-		this.email=mail;
-		this.role=r;
+
+		this.id = id;
+		this.email = mail;
+		this.role = r;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -123,7 +123,4 @@ public class User implements Serializable{
 		return true;
 	}
 
-
-	
-	
 }
